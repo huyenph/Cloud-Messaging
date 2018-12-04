@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1010648577574",
+    "firebase_url": "https://cloudmessaging-5c867.firebaseio.com",
+    "project_id": "cloudmessaging-5c867",
+    "storage_bucket": "cloudmessaging-5c867.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010648577574:android:5df6810d60f6844d",
+        "android_client_info": {
+          "package_name": "com.devutil.cloudmessaging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010648577574-7524ucpbrpra8uuq0f3eo8o01h2tp5od.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.devutil.cloudmessaging",
+            "certificate_hash": "e375707cea53538e322f33314b3488d8ed6b3a86"
+          }
+        },
+        {
+          "client_id": "1010648577574-ot2f5188blobc14bgb3bovah9t8ob23l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFjdKdB9B0jRNHsL_eu7h4Mbqb_SeV6IM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010648577574-ot2f5188blobc14bgb3bovah9t8ob23l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
