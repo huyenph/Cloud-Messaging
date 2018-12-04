@@ -14,35 +14,53 @@ import android.util.Log;
 
 import com.devutil.cloudmessaging.R;
 import com.devutil.cloudmessaging.view.MainActivity;
+import com.devutil.cloudmessaging.view.SecondActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class MyFirebaseMessaging extends FirebaseMessagingService {
     public static String token;
 
-    @Override
-    public void onNewToken(String s) {
-        super.onNewToken(s);
-        token = s;
-        Log.d("aaa", "onNewToken: " + s);
-    }
+//    @Override
+//    public void onNewToken(String s) {
+//        super.onNewToken(s);
+//        token = s;
+//        Log.d("aaa", "onNewToken: " + s);
+//    }
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        Log.d("aaa", "From: " + remoteMessage.getFrom());
         if (remoteMessage.getData().size() > 0) {
-            Log.d("aaa", "Message data payload: " + remoteMessage.getData());
+            JSONObject jsonObject = new JSONObject(remoteMessage.getData());
+            try {
+                String message = jsonObject.getString("message");
+                Log.d("aaa", "onMessageReceived: " + message);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
         if (remoteMessage.getNotification() != null) {
-            Log.d("aaa", "Message RestNotification Body: " + remoteMessage.getNotification().getBody());
+            String clickAction = remoteMessage.getNotification().getClickAction();
+            sendNotification(remoteMessage.getNotification(), clickAction);
         }
-        sendNotification(remoteMessage.getNotification());
+
     }
 
-    private void sendNotification(RemoteMessage.Notification notification) {
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    private void sendNotification(RemoteMessage.Notification notification, String clickAction) {
+        Intent intent = null;
+        if (clickAction.equals("SecondActivity")) {
+            intent = new Intent(this, SecondActivity.class);
+            intent.putExtra("data", "aaabbb");
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        } else if (clickAction.equals("MainActivity")) {
+            intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
+        
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
         String channelID = "channel id";
         long[] pattern = {0, 100, 200, 300};

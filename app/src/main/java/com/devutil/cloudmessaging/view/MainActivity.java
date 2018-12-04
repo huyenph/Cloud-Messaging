@@ -3,6 +3,7 @@ package com.devutil.cloudmessaging.view;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         etTitle = findViewById(R.id.etTitle);
         etMessage = findViewById(R.id.etMessage);
+        Log.d("aaa", "onCreate: ");
 
         findViewById(R.id.tvSendToken).setOnClickListener(this);
         findViewById(R.id.tvSendTopic).setOnClickListener(this);
