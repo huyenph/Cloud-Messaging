@@ -37,7 +37,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             JSONObject jsonObject = new JSONObject(remoteMessage.getData());
             try {
-                String message = jsonObject.getString("message");
+                String message = jsonObject.getString("title");
                 Log.d("aaa", "onMessageReceived: " + message);
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -47,7 +47,6 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
             String clickAction = remoteMessage.getNotification().getClickAction();
             sendNotification(remoteMessage.getNotification(), clickAction);
         }
-
     }
 
     private void sendNotification(RemoteMessage.Notification notification, String clickAction) {
