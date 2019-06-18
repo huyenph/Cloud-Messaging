@@ -14,6 +14,10 @@ import com.devutil.cloudmessaging.model.RestResponse;
 import com.devutil.cloudmessaging.model.RestSender;
 import com.devutil.cloudmessaging.network.RetrofitClient;
 import com.devutil.cloudmessaging.service.MyFirebaseMessaging;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import retrofit2.Call;
@@ -35,14 +39,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.tvSendTopic).setOnClickListener(this);
 
         //TODO: Get token
-//        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-//                if (task.isSuccessful()) {
-//                    token = task.getResult().getToken();
-//                }
-//            }
-//        });
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                if (task.isSuccessful()) {
+                    token = task.getResult().getToken();
+                    Log.d("aaa", token);
+                }
+            }
+        });
 
         //TODO: Send topic (not token)
         FirebaseMessaging.getInstance().subscribeToTopic("MyTopic");

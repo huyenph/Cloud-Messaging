@@ -12,14 +12,8 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-//        String data = getIntent().getStringExtra("data");
-//        Toast.makeText(this, data, Toast.LENGTH_SHORT).show();
-        if (getIntent().getExtras() != null) {
-            for (String key : getIntent().getExtras().keySet()) {
-                if (key.equals("title")) {
-                    Toast.makeText(this, getIntent().getExtras().getString(key), Toast.LENGTH_SHORT).show();
-                }
-            }
+        if (getIntent().hasExtra("data")) {
+            Toast.makeText(this, getIntent().getExtras().getString("data", ""), Toast.LENGTH_SHORT).show();
         }
     }
 }
