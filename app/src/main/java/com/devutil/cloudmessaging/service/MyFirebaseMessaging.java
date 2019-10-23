@@ -58,7 +58,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
      * 	    "data":
      *      {
      * 		    "title":"test",
-     * 		    "message":"hello"
+     * 		    "message":"{hello/}"
      *      },
      * 	    "to":"/topics/MyTopic"
      * 	    or
