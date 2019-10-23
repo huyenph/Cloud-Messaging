@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etTitle = findViewById(R.id.etTitle);
         etMessage = findViewById(R.id.etMessage);
         Log.d("aaa", "onCreate: ");
+        Log.d("aaa", "onCreate: ");
 
         findViewById(R.id.tvSendToken).setOnClickListener(this);
         findViewById(R.id.tvSendTopic).setOnClickListener(this);
